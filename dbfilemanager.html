@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        table, th, td {
+          border: 1px solid black;
+        }
+        table {
+            background-color: white;
+        }
+    </style>
+</head>
+<body style="background-color: powderblue;">
+    <h1>
+        Welcome to your File Manager</h1>
+        <ul id="navBar">
+            <li><a href="/dbupload">Upload</a></li>
+            <li><a href="/">Database</a></li>
+        </ul>
+        <ul>
+            <li><a href="/dbfilemanager">File Manager</a></li>
+        </ul>
+    
+      <p style="font-size:25px;">Pick a file to delete</p>
+    <div id="fileDIV">
+            <table id="dataItems" style="width:80%;">
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Molecule Type</th>
+                    <th>Size</th>
+                    <th>Functionality</th>
+                    <th>Upload Date</th>
+                </tr>
+
+            </table>
+        </div>
+        <script>
+         searchMyStuff();
+         function searchMyStuff() {
+
+         }
+        </script>
+
+</body>
+</html>
