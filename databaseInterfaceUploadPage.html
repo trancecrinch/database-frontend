@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #submitButton {
+            height: 20px;
+            width: 70px;
+        }
+        #searchButton {
+            height: 20px;
+            width: 70px;
+        }
+        #addFileButton{
+            height: 20px;
+            width: 20px;
+        }
+        #nameSearchTextArea {
+            width: 300px;
+        }
+        #idSearchTextArea {
+            width: 300px;
+        }
+        #authorSearchTextArea{
+            width: 300px;
+        }
+        #submitTextArea {
+            width: 400px;
+        }
+    </style>
+</head>
+<body style="background-color:powderblue;">
+    <h1>
+        Welcome to the Database Uploader
+    </h1>
+    <ul id="navBar">
+        <li><a href="file:///F:/School/database%20management/databaseInterfaceUploadPage.html">Upload</a></li>
+        <li><a href="file:///F:/School/database%20management/databaseInterfaceBrowserPage.html">Download</a></li>
+    </ul>
+    <ul>
+        <li><a href="file:///F:/School/database%20management/databaseInterfaceFileManagerPage.htm">File Manager</a></li>
+    </ul>
+    <p style="font-size:25px;">Upload your file here.</p>
+    <form>
+
+        <p id="fileSubmissions">
+            <input id="submitTextArea" type="file" />
+        </p>
+        <p>
+            <button id="addFileButton" onclick="addFile()">+</button>
+        </p>
+        <p>
+            Pick a molecule type for the file.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="dna" name="moleculeType" type="radio" value="dna" />
+            <label for="dna">DNA</label>&nbsp; -
+            <input id="rna" name="moleculeType" type="radio" value="rna" />
+            <label for="rna">RNA</label>&nbsp; -
+            <input id="dnaRna" name="moleculeType" type="radio" value="dnaRna" />
+            <label for="dnaRna">DNA/RNA</label>&nbsp;&nbsp;&nbsp;
+        </p>
+        <p>
+            Your name&nbsp;&nbsp;&nbsp;
+            <input id="nameTextArea" type="text" />
+        </p>
+        <p>
+            The category this file can go into.&nbsp;&nbsp;&nbsp;
+            <input id="structural" name="fileFunctionality" type="radio" value="structural" />
+            <label for="structural">Structural</label>&nbsp; -
+            <input id="medical" name="fileFunctionality" type="radio" value="medical" />
+            <label for="medical">Medical</label>&nbsp; -
+            <input id="plasmonics" name="fileFunctionality" type="radio" value="plasmonics" />
+            <label for="plasmonics">Plasmonics</label>&nbsp; -
+            <input id="syntheticBiology" name="fileFunctionality" type="radio" value="syntheticBiology" />
+            <label for="syntheticBiology">Synthetic Biology</label>&nbsp; -
+            <input id="other" name="fileFunctionality" type="radio" value="other" />
+            <label for="other">Other</label>&nbsp;&nbsp;&nbsp;
+        </p>
+        <p>
+            <input id="uploadButton" type="submit" value="Upload" />
+        </p>
+        <script>
+            function addFile() {
+                var x = document.createElement("INPUT");
+                x.setAttribute("type", "file");
+                x.style.width = "400px";
+                document.getElementById("fileSubmissions").appendChild("<br/>")
+                document.getElementById("fileSubmissions").appendChild(x);
+            }
+            function resetFiles() {
+
+            }
+            function upload() {
+
+                resetFiles();
+            }
+        </script>
+    </form>
+
+
+</body>
+</html>
