@@ -9,7 +9,7 @@ import uuid
 
 import pymongo
 
-UPLOAD_FOLDER = 'C:/Users/jeffrey/Downloads/1 School/ASU/8 Spring 2019-2020/CSE486/database-frontend-master/uploads'
+UPLOAD_FOLDER = os.getcwd() + "/uploads"
 
 app = Flask(__name__)
 # app = Flask(__name__, static_url_path="/", static_folder="/")
