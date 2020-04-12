@@ -1,13 +1,27 @@
-import os
+import os, requests, test, uuid, datetime
 from flask import Flask, flash, Response, request, send_file, session, jsonify, redirect
-import requests
-import test
 from werkzeug.utils import secure_filename
-import uuid
 
+import json_to_topdat, topdat_to_json
+
+# import requests
+# import test
+# import uuid
+# Reference to mongodb: 
+# https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb
+
+# TODO: create ALLOWED_EXTENSIONS: set of (conf, top, lammps, pdb, some others, check tacoxdna)
 # ALLOWED_EXTENSIONS = set(['conf'])
+# mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
 
-import pymongo
+# import pymongo
+# C:\Program Files\MongoDB\Server\4.2\bin
+
+from pymongo import MongoClient
+client = MongoClient()
+# client = MongoClient('localhost', 27017)
+db = client.test_database
+
 
 UPLOAD_FOLDER = os.getcwd() + "/uploads"
 
@@ -61,19 +75,28 @@ def upload():
         
         moleculeType = request.form['moleculeType']
         name = request.form['name']
-
-        # tags = request.form['fileFunctionality']
+        tags = request.form['fileFunctionality']
 
         try:
             fileList = request.files.getlist("file")
         except:
-            print ("not available")
+            return "files required!"
     
-    # todo: need to not overwrite files, uuid implementation? 
+    # TODO: need to not overwrite files, uuid implementation perhaps? 
+    filepaths = []
     for f in fileList:
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
+        path = os.path.join(app.config['UPLOAD_FOLDER'], f.filename)
+        filepaths.append(path) 
+        f.save(path)
+    # TODO: convert all the files into oxDNA format, convert oxDNA format to .json
+    for filepath in filepaths:
+        post = {"moleculeType" : moleculeType, 
+                "name": name,
+                "tags": tags,
+                "filepath": filepath}
+        db.posts.insert_one(post).inserted_id
 
-    return "successful upload?"
+    return send_file("templates/dbupload.html")
 
 def defaultSearch(parameters):
     default_parameters = {
