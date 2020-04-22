@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -26,11 +26,14 @@
         #authorSearchTextArea{
             width: 300px;
         }
-        #fileDIV{
-          margin-top: 10px;
-          height: 250px;
-          width: 500px;
-          overflow: auto;
+        #functionalitySearchTextArea {
+            width: 300px;
+        }
+        #fileDIV {
+            margin-top: 10px;
+            height: 250px;
+            width: 500px;
+            overflow: auto;
         }
 
     </style>
@@ -81,16 +84,7 @@
         </p>
         <p>
             Functionality?&nbsp;&nbsp;
-            <input id="structuralSearch" type="checkbox" value="structuralSearch" name="tags"/>
-            <label for="structuralSearch">Structural</label>&nbsp; -
-            <input id="medicalSearch" type="checkbox" value="medicalSearch" name="tags"/>
-            <label for="medicalSearch">Medical</label>&nbsp; -
-            <input id="plasmonicsSearch" type="checkbox" value="plasmonicsSearch" name="tags"/>
-            <label for="plasmonicsSearch">Plasmonics</label>&nbsp; -
-            <input id="syntheticBiologySearch" type="checkbox" value="syntheticBiologySearch" name="tags"/>
-            <label for="syntheticBiologySearch">Medical</label>&nbsp; -
-            <input id="otherSearch" type="checkbox" value="otherSearch" name="tags"/>
-            <label for="otherSearch">Other</label>
+           <input id="functionalitySearchTextArea" type="text" name="name"/>
         </p>
         <p>
             Date between...?
@@ -115,6 +109,7 @@
                     <th>Size</th>
                     <th>Functionality</th>
                     <th>Upload Date</th>
+                    <th>Description</th>
                 </tr>
 
             </table>
