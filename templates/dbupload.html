@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -9,23 +9,6 @@
         #submitButton {
             height: 20px;
             width: 70px;
-        }
-        #searchButton {
-            height: 20px;
-            width: 70px;
-        }
-        #addFileButton{
-            height: 20px;
-            width: 20px;
-        }
-        #nameSearchTextArea {
-            width: 300px;
-        }
-        #idSearchTextArea {
-            width: 300px;
-        }
-        #authorSearchTextArea{
-            width: 300px;
         }
         #submitTextArea {
             width: 400px;
@@ -49,9 +32,6 @@
         <p id="fileSubmissions">
             <input id="submitTextArea" type="file" name="file" multiple required/>
         </p>
-        <!-- <p>
-            <button id="addFileButton" onclick="addFile()">+</button>
-        </p> -->
         <p>
             Pick a molecule type for the file.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input id="dna" name="moleculeType" type="radio" value="dna" />
@@ -61,35 +41,22 @@
             <input id="dnaRna" name="moleculeType" type="radio" value="dnaRna" />
             <label for="dnaRna">DNA/RNA</label>&nbsp;&nbsp;&nbsp;
         </p>
-        <p>
+        <p id="moleculeNameField">
             Molecule name&nbsp;&nbsp;&nbsp;
             <input id="nameTextArea" name="name" type="text" />
         </p>
-        <p>
-            The category this file can go into.&nbsp;&nbsp;&nbsp;
-            
-            <!-- <input type="checkbox" name="structural" id="structural" value="structural"/>
-            <label for="structural">Structural</label> -->
-            <br>
-            <input id="structural" name="fileFunctionality" type="checkbox" value="structural" />
-            <label for="structural">Structural</label>
-            <br>
-            <input id="medical" name="fileFunctionality" type="checkbox" value="medical" />
-            <label for="medical">Medical</label>
-            <br>
-            <input id="plasmonics" name="fileFunctionality" type="checkbox" value="plasmonics" />
-            <label for="plasmonics">Plasmonics</label>
-            <br>
-            <input id="syntheticBiology" name="fileFunctionality" type="checkbox" value="syntheticBiology" />
-            <label for="syntheticBiology">Synthetic Biology</label>
-            <br>
-            <input id="other" name="fileFunctionality" type="checkbox" value="other" />
-            <label for="other">Other</label>
-            <br>
+        <p id="categoryTextField">
+            Type a category this file can go into.&nbsp;&nbsp;&nbsp;
+            <input id="categoryTextArea" name="category" type="text" />
+        </p>
+        <p id="descriptionTextField">
+            Type a description of your file(s).&nbsp;&nbsp;&nbsp;
+            <input id="descriptionTextArea" size="200" name="description" type="text"/> 
         </p>
         <p>
-            <input id="uploadButton" type="submit" value="Upload" />
+            <input id="uploadButton" onclick ="uploadCheck()" type="submit" value="Upload" />
         </p>
+        <p id="displayMessage"></p>
         <!-- <script>
             function addFile() {
                 var x = document.createElement("INPUT");
@@ -98,14 +65,27 @@
                 document.getElementById("fileSubmissions").appendChild("<br/>")
                 document.getElementById("fileSubmissions").appendChild(x);
             }
-            function resetFiles() {
-
-            }
-            function upload() {
-
-                resetFiles();
-            }
         </script> -->
+        <script>
+            function uploadCheck() {
+                if (document.getElementById("categoryTextArea").value.localeCompare("") == 0) {
+                    document.getElementById("displayMessage").innerHTML = "Please type a category for your file(s)";
+                }
+                else if (document.getElementById("nameTextArea").value.localeCompare("") == 0) {
+                    document.getElementById("displayMessage").innerHTML = "Please select a molecule name for your file(s)";
+                }
+                else if (document.getElementById("dna").checked == false && document.getElementById("rna").checked == false && document.getElementById("dnaRna").checked == false) {
+                    document.getElementById("displayMessage").innerHTML = "Please select a molecule type for your file(s)";
+                }
+                else if (document.getElementById("descriptionTextArea").value.localeCompare("") == 0) {
+                    document.getElementById("displayMessage").innerHTML = "Please enter a description of your file(s)";
+                }
+                else {
+                    //enter submission function call here
+                    document.getElementById("displayMessage").innerHTML = "Sending...";
+                }
+            }
+        </script>
     </form>
 
 
